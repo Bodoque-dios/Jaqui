@@ -1,38 +1,46 @@
-// An array of links for navigation bar
+
 const navBarLinks = [
-  { name: "Home", url: "/" },
-  { name: "Products", url: "/products" },
-  { name: "Services", url: "/services" },
-  { name: "Blog", url: "/blog" },
-  { name: "Contact", url: "/contact" },
+  { name: "Inicio", url: "/" },
+  { name: "Productos", url: "/productos" },
+  { name: "Muebles a pedido", url: "/muebles-a-pedido" },
+  /*{ name: "Blog", url: "/blog" },*/
+  { name: "Contacto", url: "/contact" },
 ];
-// An array of links for footer
+
 const footerLinks = [
   {
-    section: "Ecosystem",
+    section: "Tienda",
     links: [
-      { name: "Documentation", url: "/welcome-to-docs/" },
-      { name: "Tools & Equipment", url: "/products" },
-      { name: "Construction Services", url: "/services" },
+      { name: "Dormitorio", url: "/welcome-to-docs/" },
+      { name: "Comedores", url: "/products" },
+      { name: "Oficina", url: "/services" },
     ],
   },
   {
-    section: "Company",
+    section: "Nosotros",
     links: [
-      { name: "About us", url: "#" },
+      { name: "Sobre nosotros", url: "#" },
       { name: "Blog", url: "/blog" },
-      { name: "Careers", url: "#" },
-      { name: "Customers", url: "#" },
+      { name: "Opiniones", url: "#" },
     ],
   },
+  {
+    section:"Ayuda",
+    links:[
+      {name:"Preguntas frecuentes", url:"/faq"},
+      {name:"Envios y devoluciones", url:"/envios"},
+      {name:"Consejos para el cuidado de muebles", url:"/cuidados"},
+      {name:"Contáctanos", url:"/contacto"},
+    ]
+  }
 ];
-// An object of links for social icons
+
 const socialLinks = {
-  facebook: "https://www.facebook.com/",
-  x: "https://twitter.com/",
+  facebook: "#",
+  x: "#",
   github: "https://github.com/mearashadowfax/ScrewFast",
-  google: "https://www.google.com/",
-  slack: "https://slack.com/",
+  google: "#",
+  slack: "#",
 };
 
 export default {
