@@ -1,0 +1,18 @@
+---
+import { Image } from "astro:assets";
+
+const { src, alt } = Astro.props;
+---
+
+<div class="hs-carousel-slide w-[50vw]">
+  <div class="flex h-full w-full justify-center">
+    <Image
+      src={src}
+      alt={alt}
+      class="object-fit h-full w-full object-center"
+      draggable={"false"}
+      loading={"eager"}
+      format={"avif"}
+    />
+  </div>
+</div>

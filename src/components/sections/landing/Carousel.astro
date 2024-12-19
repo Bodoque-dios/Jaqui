@@ -1,0 +1,91 @@
+---
+import { Image } from "astro:assets";
+
+const { src, alt } = Astro.props;
+
+interface Props {
+  src: any[];
+  alt: string[];
+}
+---
+
+<div class="h-[50vh] w-[90%] rounded-lg shadow-md">
+  <div
+    data-hs-carousel='{
+          "loadingClasses": "opacity-0", "dotsItemClasses": "hs-carousel-active:bg-blue-700 hs-carousel-active:border-blue-700 size-3 border border-gray-400 rounded-full cursor-pointer dark:border-neutral-600 dark:hs-carousel-active:bg-blue-500 dark:hs-carousel-active:border-blue-500", "isAutoPlay":"true" }'
+    class="relative h-full w-full"
+  >
+    <div
+      class="hs-carousel relative h-full min-h-64 w-full overflow-hidden rounded-lg"
+    >
+      <div
+        class="hs-carousel-body absolute bottom-0 start-0 top-0 flex h-full w-full flex-nowrap opacity-0 transition-transform duration-700"
+      >
+        {
+          src.map((image, index) => (
+            <div class="hs-carousel-slide h-full w-full">
+              <Image
+                src={image}
+                alt={alt[index]}
+                class="z-10 h-full w-full scale-110 object-cover object-center"
+                draggable={"false"}
+                loading={"eager"}
+                format={"avif"}
+              />
+            </div>
+          ))
+        }
+      </div>
+    </div>
+
+    <button
+      type="button"
+      class="hs-carousel-prev absolute inset-y-0 start-0 inline-flex h-full w-[46px] items-center justify-center rounded-s-lg text-gray-800 hover:bg-gray-800/10 focus:bg-gray-800/10 focus:outline-none disabled:pointer-events-none hs-carousel-disabled:opacity-50 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+    >
+      <span class="text-2xl" aria-hidden="true">
+        <svg
+          class="size-5 shrink-0"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m15 18-6-6 6-6"></path>
+        </svg>
+      </span>
+      <span class="sr-only">Previous</span>
+    </button>
+    <button
+      type="button"
+      class="hs-carousel-next absolute inset-y-0 end-0 inline-flex h-full w-[46px] items-center justify-center rounded-e-lg text-gray-800 hover:bg-gray-800/10 focus:bg-gray-800/10 focus:outline-none disabled:pointer-events-none hs-carousel-disabled:opacity-50 dark:text-white dark:hover:bg-white/10 dark:focus:bg-white/10"
+    >
+      <span class="sr-only">Next</span>
+      <span class="text-2xl" aria-hidden="true">
+        <svg
+          class="size-5 shrink-0"
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path d="m9 18 6-6-6-6"></path>
+        </svg>
+      </span>
+    </button>
+
+    <div
+      class="hs-carousel-pagination absolute bottom-3 end-0 start-0 flex justify-center space-x-2"
+    >
+    </div>
+  </div>
+</div>
