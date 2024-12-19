@@ -11,6 +11,10 @@ import features from "@data/features.json";
 
 import featureImage from "@images/features-image.avif";
 
+
+const carouselUrl = [ heroImage, heroImage, heroImage ];
+const carouselAlt = [ "Carousel Image 1", "Carousel Image 2", "Carousel Image 3" ];
+
 ---
 
 <MainLayout>
@@ -26,8 +30,8 @@ import featureImage from "@images/features-image.avif";
     primaryBtnURL="/productos"
     secondaryBtn="Contactactanos"
     secondaryBtnURL="/contacto"
-    src={heroImage}
-    alt="Cajas apiladas de productos Famago que contienen muebles de diseño industrial"
+    src={carouselUrl}
+    alt={carouselAlt}
   />
   <FeaturesGeneral
     title="Meeting Industry Demands"
