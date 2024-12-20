@@ -1,0 +1,78 @@
+---
+import Category from "./Category.astro";
+
+const images = [
+  "https://images.unsplash.com/photo-1668906093328-99601a1aa584?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80",
+  "https://images.unsplash.com/photo-1567016526105-22da7c13161a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80 ",
+];
+
+interface item {
+  src: string;
+  alt: string;
+  title: string;
+  link: string;
+}
+
+const data: item[] = [
+  {
+    src: "https://images.unsplash.com/photo-1540575861501-7cf05a4b125a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80",
+    alt: "Category Image",
+    title: "Category 1",
+    link: "category-1",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1668906093328-99601a1aa584?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80",
+    alt: "Gallery Masonry Image",
+    title: "Category 2",
+    link: "category-2",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1668584054131-d5721c515211?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80",
+    alt: "Gallery Masonry Image",
+    title: "Category 3",
+    link: "category-3",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1664574654529-b60630f33fdb?ixlib=rb-4.0.3&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80",
+    alt: "Gallery Masonry Image",
+    title: "Category 4",
+    link: "category-4",
+  },
+  {
+    src: "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=560&q=80",
+    alt: "Gallery Masonry Image",
+    title: "Category 5",
+    link: "category-5",
+  },
+];
+
+const chunk = (arr: any[]): any[][] => {
+  if (arr.length === 0) {
+    return [];
+  }
+  const arraySize = Math.ceil(arr.length / 3);
+  const newArray: any[][] = [];
+
+  for (let i = 0; i < arr.length; i += arraySize) {
+    newArray.push(arr.slice(i, i + arraySize));
+  }
+
+  return newArray;
+};
+
+const [col1, col2, col3] = chunk(data);
+---
+
+<div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
+  <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
+    <div class="space-y-2">
+      {col1.map((item: item) => <Category data={item} />)}
+    </div>
+    <div class="space-y-2">
+      {col2.map((item: item) => <Category data={item} />)}
+    </div>
+    <div class="space-y-2">
+      {col3.map((item: item) => <Category data={item} />)}
+    </div>
+  </div>
+</div>
