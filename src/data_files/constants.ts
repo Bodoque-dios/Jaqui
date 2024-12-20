@@ -1,12 +1,12 @@
 import ogImageSrc from "@images/social.png";
 
 export const SITE = {
-  title: "ScrewFast",
-  tagline: "Top-quality Hardware Tools",
-  description: "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs. Start exploring and contact our sales team for superior quality and reliability.",
-  description_short: "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs.",
-  url: "https://screwfast.uk",
-  author: "Emil Gulamov",
+  title: "Famago",
+  tagline: "Muebles de diseño industrial de alta calidad",
+  description: "Famago ofrece muebles de diseño industrial de alta calidad, ideales para el hogar y la oficina, fabricados con orgullo en Chile. Explora nuestra colección y contacta a nuestro equipo de ventas para obtener productos de calidad superior y confiabilidad.",
+  description_short: "Famago ofrece muebles de diseño industrial de alta calidad, ideales para el hogar y la oficina.",
+  url: "https://famago.cl",
+  author: "Matías Olea",
 };
 
 export const SEO = {
@@ -15,7 +15,7 @@ export const SEO = {
   structuredData: {
     "@context": "https://schema.org",
     "@type": "WebPage",
-    inLanguage: "en-US",
+    inLanguage: "es-CL",
     "@id": SITE.url,
     url: SITE.url,
     name: SITE.title,
@@ -30,10 +30,10 @@ export const SEO = {
 };
 
 export const OG = {
-  locale: "en_US",
+  locale: "es_CL",
   type: "website",
   url: SITE.url,
-  title: `${SITE.title}: : Hardware Tools & Construction Services`,
-  description: "Equip your projects with ScrewFast's top-quality hardware tools and expert construction services. Trusted by industry leaders, ScrewFast offers simplicity, affordability, and reliability. Experience the difference with user-centric design and cutting-edge tools. Start exploring now!",
+  title: `${SITE.title}: Muebles de diseño industrial de alta calidad`,
+  description: "Descubre los muebles de diseño industrial de alta calidad de Famago, ideales para el hogar y la oficina. Fabricados con orgullo en Chile, nuestros productos ofrecen simplicidad, asequibilidad y confiabilidad. Explora nuestra colección ahora y experimenta la diferencia.",
   image: ogImageSrc,
 };
