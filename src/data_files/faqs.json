@@ -1,29 +1,30 @@
 {
-  "subTitle": "Ask us anything about our brand and products, and get factual responses.",
+  "title": "Preguntas Frecuentes",
+  "subTitle": "Pregúntanos cualquier cosa sobre nuestra marca y productos, y obtén respuestas precisas.",
   "faqs": [
     {
-      "question": "What types of tools are included in the Starter Kit?",
-      "answer": "The Starter Kit features essential hand and power tools for diverse DIY projects, including hammers, drills, screwdrivers, and a variety of fasteners. It's a curated selection to help beginners and experienced DIYers alike tackle most home improvement tasks."
+      "question": "¿Qué tipos de muebles están incluidos en el Kit de Inicio?",
+      "answer": "El Kit de Inicio incluye muebles esenciales para diversos proyectos de decoración, como mesas, sillas, estanterías y una variedad de accesorios. Es una selección curada para ayudar tanto a principiantes como a decoradores experimentados a abordar la mayoría de las tareas de mejora del hogar."
     },
     {
-      "question": "Can I upgrade from the Starter Kit to the Professional Toolbox?",
-      "answer": "Absolutely! You can upgrade to the Professional Toolbox at any time to access a wider range of high-quality tools, enjoy priority customer support, and receive exclusive content. Contact our support team for a seamless transition."
+      "question": "¿Puedo actualizar del Kit de Inicio al Paquete Profesional?",
+      "answer": "¡Absolutamente! Puedes actualizar al Paquete Profesional en cualquier momento para acceder a una gama más amplia de muebles de alta calidad, disfrutar de soporte prioritario al cliente y recibir contenido exclusivo. Contacta a nuestro equipo de soporte para una transición sin problemas."
     },
     {
-      "question": "What discounts are available for bulk orders through the Professional Toolbox plan?",
-      "answer": "Professional Toolbox members are entitled to exclusive discounts on bulk orders, the percentage of which may vary depending on the order volume. Get in touch with us to discuss your needs, and we'll provide a tailored discount structure."
+      "question": "¿Qué descuentos están disponibles para pedidos al por mayor a través del plan Paquete Profesional?",
+      "answer": "Los miembros del Paquete Profesional tienen derecho a descuentos exclusivos en pedidos al por mayor, cuyo porcentaje puede variar dependiendo del volumen del pedido. Ponte en contacto con nosotros para discutir tus necesidades y te proporcionaremos una estructura de descuentos personalizada."
     },
     {
-      "question": "What kind of customer support can I expect?",
-      "answer": "All our customers receive dedicated email support. With the Starter Kit, you'll receive our standard support, while the Professional Toolbox plan upgrades you to priority support, meaning faster response times and specialized assistance."
+      "question": "¿Qué tipo de soporte al cliente puedo esperar?",
+      "answer": "Todos nuestros clientes reciben soporte dedicado por correo electrónico. Con el Kit de Inicio, recibirás nuestro soporte estándar, mientras que el plan Paquete Profesional te actualiza a soporte prioritario, lo que significa tiempos de respuesta más rápidos y asistencia especializada."
     },
     {
-      "question": "How current are the online resources and tutorials?",
-      "answer": "We regularly update our online resources and tutorials to reflect the latest trends in DIY and construction, as well as introductions to new tools and techniques. Our material aims to be comprehensive and user-friendly for all skill levels."
+      "question": "¿Qué tan actualizados están los recursos y tutoriales en línea?",
+      "answer": "Actualizamos regularmente nuestros recursos y tutoriales en línea para reflejar las últimas tendencias en decoración y mobiliario, así como introducciones a nuevos productos y técnicas. Nuestro material tiene como objetivo ser completo y fácil de usar para todos los niveles de habilidad."
     },
     {
-      "question": "Does ScrewFast offer services for large-scale construction projects?",
-      "answer": "Yes, our Enterprise Solutions are designed for larger companies requiring comprehensive services. We provide consultation, planning, and supply of high-grade tools and materials, as well as staffing solutions for substantial construction needs. Contact us for a customized quote."
+      "question": "¿ScrewFast ofrece servicios para proyectos de decoración a gran escala?",
+      "answer": "Sí, nuestras Soluciones Empresariales están diseñadas para empresas más grandes que requieren servicios integrales. Proporcionamos consulta, planificación y suministro de muebles y materiales de alta calidad, así como soluciones de personal para necesidades de decoración sustanciales. Contáctanos para una cotización personalizada."
     }
   ]
 }

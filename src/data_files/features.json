@@ -1,22 +1,29 @@
-[
-  {
-    "heading": "Dedicated Teams",
-    "content": "Benefit from our committed teams who ensure your success is personal. Count on expert guidance and exceptional results throughout your project journey.",
-    "svg": "groups"
+{
+  "headings": {
+    "title": "Muebles que Transforman tu Espacio",
+    "subTitle": "En Famago, abordamos las necesidades únicas de los espacios modernos de vida y trabajo. Desde diseños elegantes hasta piezas funcionales, estamos comprometidos a mejorar tu entorno con muebles de alta calidad y estilo industrial, fabricados en Chile."
   },
-  {
-    "heading": "Simplicity and Affordability",
-    "content": "Find easy-to-use, affordable solutions with ScrewFast's line of tools and equipment. Our products make procurement simple and keep projects within budget.",
-    "svg": "verified"
-  },
-  {
-    "heading": "Comprehensive Documentation",
-    "content": "Integrate with ease using ScrewFast's exhaustive guides and libraries. Achieve seamless product adoption with our full suite of documentation designed for your success.",
-    "svg": "books"
-  },
-  {
-    "heading": "User-Centric Design",
-    "content": "Experience the difference with ScrewFast's user-focused design — where functionality meets practicality for an enhanced work experience.",
-    "svg": "frame"
-  }
-]
+
+  "features": [
+    {
+      "heading": "Hecho en Chile",
+      "content": "Nos enorgullece fabricar nuestros muebles localmente en Chile, apoyando la industria nacional y asegurando que cada pieza cumpla con los más altos estándares de calidad.",
+      "svg": "chile"
+    },
+    {
+      "heading": "Diseños Personalizados",
+      "content": "Crea el espacio de tus sueños con muebles diseñados a medida para adaptarse perfectamente a tus necesidades y estilo. Cada pieza está pensada para mejorar tu entorno con elegancia y funcionalidad.",
+      "svg": "books"
+    },
+    {
+      "heading": "Estilo Industrial de Alta Calidad",
+      "content": "Nuestros muebles combinan el estilo industrial con materiales de alta calidad, asegurando durabilidad y estética que transforman cualquier habitación o espacio de trabajo.",
+      "svg": "tools"
+    },
+    {
+      "heading": "Funcionalidad y Comodidad",
+      "content": "Cada mueble está diseñado no solo para ser visualmente atractivo, sino también para ofrecer la máxima comodidad y funcionalidad, optimizando tu espacio de manera efectiva.",
+      "svg": "house"
+    }
+  ]
+}

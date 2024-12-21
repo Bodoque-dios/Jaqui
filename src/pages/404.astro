@@ -5,7 +5,7 @@ import Btn404 from "@components/ui/buttons/Btn404.astro";
 import { SITE } from "@data/constants";
 
 // Define types for translations
-type TranslationKeys = "en" | "fr";
+type TranslationKeys = "es" | "en";
 type Translations = {
   [key in TranslationKeys]: {
     pageTitle: string;
@@ -16,21 +16,21 @@ type Translations = {
 };
 
 // Define variables for page content
-const defaultLang: TranslationKeys = "en";
+const defaultLang: TranslationKeys = "es";
 const translations: Translations = {
   en: {
     pageTitle: `Page Not Found | ${SITE.title}`,
-    subTitle: "Oops, this isn't the tool you were looking for!",
+    subTitle: "Oops! Looks like this page doesn't exist.",
     content:
-      "Don't let this hiccup slow you down. Let's get you back to building your masterpiece.",
+      "Don't worry, we'll get you back on track. Let's find the perfect piece for your space together!",
     btnTitle: "Go Back",
   },
-  fr: {
-    pageTitle: `Page Non Trouvée | ${SITE.title}`,
-    subTitle: "Oops, ce n'est pas l'outil que vous recherchiez!",
+  es: {
+    pageTitle: `Página No Encontrada | ${SITE.title}`,
+    subTitle: "¡Vaya! Parece que esta página no existe.",
     content:
-      "Ne laissez pas ce contretemps vous ralentir. Revenons à la construction de votre chef-d'œuvre.",
-    btnTitle: "Retournez",
+      "No te preocupes, te ayudamos a encontrar lo que buscas. ¡Vamos a encontrar la pieza perfecta para tu espacio!",
+    btnTitle: "Volver",
   },
 };
 

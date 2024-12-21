@@ -50,7 +50,7 @@ export const Icons = {
       },
     ],
     class:
-      "mt-2 h-6 w-6 flex-shrink-0 fill-neutral-700 hs-tab-active:fill-orange-400 dark:fill-neutral-300 dark:hs-tab-active:fill-orange-300 md:h-7 md:w-7",
+      "mt-2 h-6 w-6 flex-shrink-0  fill-orange-400 dark:fill-neutral-300 dark:fill-orange-300 md:h-7 md:w-7",
     width: 48,
     height: 48,
     viewBox: "0 -960 960 960",
@@ -74,7 +74,7 @@ export const Icons = {
       },
     ],
     class:
-      "h-6 w-6 flex-shrink-0 text-neutral-700 hs-tab-active:text-orange-400 dark:text-neutral-300 dark:hs-tab-active:text-orange-300 md:h-7 md:w-7",
+      "h-6 w-6 flex-shrink-0 text-neutral-700 text-orange-400 dark:text-neutral-300 dark:text-orange-300 md:h-7 md:w-7",
     width: 24,
     height: 24,
     viewBox: "0 0 24 24",
@@ -523,4 +523,17 @@ export const Icons = {
     strokeLinejoin: "round",
     stroke: "currentColor",
   },
+  chile:{
+    paths: [
+      {
+        d: "M0 0h960v480H0V0zm0 480h960v480H0V480zM120 120h120v120H120V120zm240 0h120v120H360V120zm240 0h120v120H600V120zM120 240h120v120H120V240zm240 0h120v120H360V240zm240 0h120v120H600V240z",
+      },
+    ],
+    class: "mt-1 h-8 w-8 flex-shrink-0 fill-current text-neutral-700 dark:text-neutral-300",
+    width: 48,
+    height: 48,
+    viewBox: "0 0 960 480",
+  }
+  
+  
 };

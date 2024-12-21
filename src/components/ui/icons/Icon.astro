@@ -1,5 +1,6 @@
 ---
 import { Icons } from "./icons.ts";
+import Chile from "./Chile.astro";
 
 interface Path {
   d: string;
@@ -14,7 +15,13 @@ let paths: Path[] = icon.paths || [];
 ---
 
 {
-  icon ? (
+  name === "chile" ? (
+    <img
+      src="https://raw.githubusercontent.com/tabler/tabler-flags/b9b6b2c8b33900c13033c01cf8440aadc9a9b276/flags/chile.svg"
+      alt="Chile"
+      class="h-6 w-6"
+    />
+  ) : icon ? (
     <svg
       class={icon.class}
       height={icon.height}
@@ -27,7 +34,8 @@ let paths: Path[] = icon.paths || [];
       stroke-width={icon.strokeWidth}
       stroke-linecap={icon.strokeLinecap}
       stroke-linejoin={icon.strokeLinejoin}
-    ><title>{icon.title}</title>
+    >
+      <title>{icon.title}</title>
       {paths.map((path: Path) => (
         <path d={path.d} class={path.class || ""} />
       ))}

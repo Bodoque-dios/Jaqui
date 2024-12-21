@@ -3,7 +3,7 @@
 import AccordionItem from "@components/ui/blocks/AccordionItem.astro";
 
 // Define props from Astro
-const { title, faqs } = Astro.props;
+const { faqs } = Astro.props;
 
 // Define TypeScript interface for props
 interface Faq {
@@ -12,12 +12,12 @@ interface Faq {
 }
 
 interface FaqGroup {
-  subTitle?: string;
+  title: string;
+  subTitle: string;
   faqs: Faq[];
 }
 
 interface Props {
-  title: string;
   faqs: FaqGroup;
 }
 // Define a helper function to generate ids dynamically.
@@ -34,7 +34,7 @@ const makeId = (base: any, index: any) => `${base}${index + 1}`;
         <h2
           class="text-2xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
         >
-          <Fragment set:html={title} />
+          <Fragment set:html={faqs.title} />
         </h2>
         <p class="mt-1 hidden text-neutral-600 dark:text-neutral-400 md:block">
           {faqs.subTitle}

@@ -4,7 +4,7 @@ const navBarLinks = [
   { name: "Productos", url: "/productos" },
   { name: "Muebles a pedido", url: "/muebles-a-pedido" },
   /*{ name: "Blog", url: "/blog" },*/
-  { name: "Contacto", url: "/contact" },
+  { name: "Contacto", url: "/contacto" },
 ];
 
 const footerLinks = [

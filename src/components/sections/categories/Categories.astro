@@ -46,11 +46,11 @@ const data: item[] = [
   },
 ];
 
-const chunk = (arr: any[]): any[][] => {
+const chunk = (arr: any[], cols: number): any[][] => {
   if (arr.length === 0) {
     return [];
   }
-  const arraySize = Math.ceil(arr.length / 3);
+  const arraySize = Math.ceil(arr.length / cols);
   const newArray: any[][] = [];
 
   for (let i = 0; i < arr.length; i += arraySize) {
@@ -60,19 +60,29 @@ const chunk = (arr: any[]): any[][] => {
   return newArray;
 };
 
-const [col1, col2, col3] = chunk(data);
+const cols3 = chunk(data, 3);
+const cols2 = chunk(data, 2);
 ---
 
-<div class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14">
-  <div class="grid grid-cols-2 gap-2 sm:grid-cols-3">
-    <div class="space-y-2">
-      {col1.map((item: item) => <Category data={item} />)}
-    </div>
-    <div class="space-y-2">
-      {col2.map((item: item) => <Category data={item} />)}
-    </div>
-    <div class="space-y-2">
-      {col3.map((item: item) => <Category data={item} />)}
-    </div>
+<div class="mx-auto max-w-[85rem] px-4 py-10 md:px-6 lg:px-8 lg:py-14">
+  <div class="grid grid-cols-2 gap-2 md:grid-cols-3">
+    {
+      cols3.map((col: any[]) => (
+        <div class="hidden md:block space-y-2">
+          {col.map((item: item) => (
+            <Category data={item} />
+          ))}
+        </div>
+      ))
+    }
+    {
+      cols2.map((col: any[]) => (
+        <div class=" space-y-2 md:hidden">
+          {col.map((item: item) => (
+            <Category data={item} />
+          ))}
+        </div>
+      ))
+    }
   </div>
 </div>
