@@ -37,3 +37,5 @@ export const OG = {
   description: "Descubre los muebles de diseño industrial de alta calidad de Famago, ideales para el hogar y la oficina. Fabricados con orgullo en Chile, nuestros productos ofrecen simplicidad, asequibilidad y confiabilidad. Explora nuestra colección ahora y experimenta la diferencia.",
   image: ogImageSrc,
 };
+
+export const whatsapplink = "https://wa.me/56994400000";

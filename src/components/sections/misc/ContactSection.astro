@@ -7,13 +7,15 @@ import EmailContactInput from "@components/ui/forms/input/EmailContactInput.astr
 import PhoneInput from "@components/ui/forms/input/PhoneInput.astro";
 import TextAreaInput from "@components/ui/forms/input/TextAreaInput.astro";
 import Icon from "@components/ui/icons/Icon.astro";
-
+import Whatsapp from "@/components/ui/icons/whatsapp.astro";
+import { whatsapplink } from "@data/constants.ts";
 // Define the variables that will be used in this component
-const title: string = "Contáctenos";
+const title: string = "Contáctanos";
 const subTitle: string =
-  "¿Tiene preguntas o quiere discutir un proyecto? Contáctenos y creemos la solución perfecta con nuestras herramientas y servicios.";
+  "¿Tienes preguntas o quieres discutir un proyecto? Contáctanos y creemos la solución perfecta.";
 const formTitle: string = "Complete el formulario a continuación";
-const formSubTitle: string = "Nos pondremos en contacto con usted en 1-2 días hábiles.";
+const formSubTitle: string =
+  "Nos pondremos en contacto con usted en 1-5 días hábiles.";
 ---
 
 <!-- Contact Us -->
@@ -44,12 +46,12 @@ const formSubTitle: string = "Nos pondremos en contacto con usted en 1-2 días h
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <TextInput
                 id="hs-firstname-contacts"
-                label="First Name"
+                label="Nombre"
                 name="hs-firstname-contacts"
               />
               <TextInput
                 id="hs-lastname-contacts"
-                label="Last Name"
+                label="Apellido"
                 name="hs-firstname-contacts"
               />
             </div>
@@ -57,13 +59,13 @@ const formSubTitle: string = "Nos pondremos en contacto con usted en 1-2 días h
             <PhoneInput id="hs-phone-number" />
             <TextAreaInput
               id="hs-about-contacts"
-              label="Details"
+              label="Cuentanos más sobre tu consulta"
               name="hs-about-contacts"
             />
           </div>
 
           <div class="mt-4 grid">
-            <AuthBtn title="Send Message" />
+            <AuthBtn title="Enviar mensaje" />
           </div>
 
           <div class="mt-3 text-center">
@@ -73,40 +75,30 @@ const formSubTitle: string = "Nos pondremos en contacto con usted en 1-2 días h
           </div>
         </form>
       </div>
-
-      <!--ContactIconBlocks are used to display different methods of contacting, including visiting office, email, browsing knowledgebase, and FAQ.-->
+      <!--ContactIconBlocks se utilizan para mostrar diferentes métodos de contacto, incluyendo visitar la oficina, correo electrónico, navegar por la base de conocimientos y FAQ.-->
       <div class="divide-y divide-neutral-300 dark:divide-neutral-700">
         <ContactIconBlock
-          heading="Knowledgebase"
-          content="Browse through all of our knowledgebase articles."
+          heading="Preguntas Frecuentes"
+          content="Explora nuestras preguntas frecuentes para obtener respuestas rápidas y claras a preguntas comunes."
           isLinkVisible={true}
-          linkTitle="Visit guides & tutorials"
-          linkURL="#"
-          isArrowVisible={true}
-          ><Icon name="question" />
-        </ContactIconBlock>
-
-        <ContactIconBlock
-          heading="FAQ"
-          content="Explore our FAQ for quick, clear answers to common queries."
-          isLinkVisible={true}
-          linkTitle="Visit FAQ"
-          linkURL="#"
+          linkTitle="Visitar FAQ"
+          linkURL="/preguntas-frecuentes"
           isArrowVisible={true}
           ><Icon name="chatBubble" />
         </ContactIconBlock>
-
         <ContactIconBlock
-          heading="Visit our office"
-          content="UK ScrewFast"
-          isAddressVisible={true}
-          addressContent="72 Union Terrace, E10 4PE London"
-          ><Icon name="mapPin" />
+          heading="Habla con nosotros por WhatsApp"
+          content="¿Prefieres chatear? Contáctanos a través de WhatsApp para obtener respuestas rápidas."
+          isLinkVisible={true}
+          linkTitle="Chatear en WhatsApp"
+          linkURL={whatsapplink}
+          isArrowVisible={true}
+          ><Whatsapp />
         </ContactIconBlock>
 
         <ContactIconBlock
-          heading="Contact us by email"
-          content="Prefer the written word? Drop us an email at"
+          heading="Contáctanos por correo electrónico"
+          content="¿Prefieres la palabra escrita? Envíanos un correo electrónico a"
           isLinkVisible={true}
           linkTitle="contacto@famago.cl"
           linkURL="#"
