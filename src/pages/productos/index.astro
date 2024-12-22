@@ -11,16 +11,15 @@ import type { CollectionEntry } from "astro:content";
 import { SITE } from "@data/constants";
 import { sanityClient } from "sanity:client";
 import { urlForImage } from "@/sanity/lib/urlForImage";
+interface productCategory {
+  _id: string;
+  nombre: string;
+  imagen: string;
+  slug: string;
+  description: string;
+  alt: string;
+}
 
-// Fetching all the product related content and sorting it by main.id
-const product: CollectionEntry<"products">[] = (
-  await getCollection("products", ({ id }) => {
-    return id.startsWith("en/");
-  })
-).sort(
-  (a: CollectionEntry<"products">, b: CollectionEntry<"products">) =>
-    a.data.main.id - b.data.main.id
-);
 
 const categoryQuery = `*[_type == "categoria"] {
   _id,
@@ -28,15 +27,9 @@ const categoryQuery = `*[_type == "categoria"] {
   imagen,
   slug,
   descripcion,
+  alt
 }`;
 const categoriesResult = await sanityClient.fetch(categoryQuery);
-interface productCategory {
-  _id: string;
-  nombre: string;
-  imagen: string;
-  slug: string;
-  description: string;
-}
 
 const categories: productCategory[] = categoriesResult.map((category: any) => {
   return {
@@ -45,6 +38,7 @@ const categories: productCategory[] = categoriesResult.map((category: any) => {
     imagen: urlForImage(category.imagen).url(),
     slug: category.slug.current,
     description: category.descripcion,
+    alt: category.alt,
   };
 });
 

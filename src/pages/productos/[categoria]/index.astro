@@ -1,0 +1,116 @@
+---
+// Import section components
+import MainLayout from "@/layouts/MainLayout.astro";
+import ProductTabBtn from "@components/ui/buttons/ProductTabBtn.astro";
+import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+import { SITE } from "@data/constants";
+import { sanityClient } from "sanity:client";
+import CardSmall from "@/components/ui/cards/CardSmall.astro";
+import { urlForImage } from "@/sanity/lib/urlForImage";
+
+// Global declaration for gsap animation library
+declare global {
+  interface Window {
+    gsap: any;
+  }
+}
+
+interface Props {
+  category: any;
+}
+
+interface productCategory {
+  _id: string;
+  nombre: string;
+  imagen: string;
+  alt: string;
+  slug: string;
+  description: string;
+}
+// This gets the static paths for all the unique products
+/**
+ * 
+ */
+export async function getStaticPaths() {
+  const categoryQuery = `*[_type == "categoria"]`;
+
+  const categories = await sanityClient.fetch(categoryQuery);
+  return categories.map((category: any) => {
+    return {
+      params: { categoria: category.slug.current },
+      props: {category },
+    };
+  });
+}
+
+const { category } = Astro.props;
+const productsQuery = `*[_type == "producto" && categoria._ref == $categoryId] {
+  _id,
+  nombre,
+  imagen,
+  slug,
+  descripcion,
+  alt,
+}`;
+
+const productsResult = await sanityClient.fetch(productsQuery, {
+  categoryId: category._id,
+});
+
+const products = productsResult.map((product: any) => {
+  return {
+    _id: product._id,
+    nombre: product.nombre,
+    imagen: urlForImage(product.imagen).url(),
+    slug: product.slug.current,
+    description: product.nombre,
+    alt: product.alt ?? product.descripcion,
+  };
+});
+
+
+const pageTitle: string = `${category.nombre} | ${SITE.title}`;
+---
+
+<MainLayout title={pageTitle}>
+  <section
+    class="mx-auto flex min-h-[65dvh] max-w-[85rem] flex-col px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
+  >
+    <div class="mb-4 flex items-center justify-between gap-8 sm:mb-8 md:mb-12">
+      <div class="flex items-center gap-12">
+        <h1
+          class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
+        >
+          {category.nombre}
+        </h1>
+        {
+          category.descripcion && (
+            <p class="hidden max-w-screen-sm text-pretty text-neutral-600 dark:text-neutral-400 md:block">
+              {category.descripcion}
+            </p>
+          )
+        }
+      </div>
+    </div>
+
+    <div
+      class="grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 md:gap-6 xl:gap-8"
+    >
+      {
+        products.length > 0 ? (
+          products.map((product: any) => {
+            return <CardSmall product={product} />;
+          })
+        ) : (
+          <p class="col-span-3 text-center text-lg font-medium text-neutral-600 dark:text-neutral-400">
+            Lo sentimos, no hay productos disponibles en esta categoría actualmente. Si deseas un mueble personalizado, por favor contáctanos por Whatsapp o correo electrónico.
+          </p>
+          <br />
+          <PrimaryCTA url="/contacto" title="Contáctanos" />
+        )
+      }
+    </div>
+  </section>
+</MainLayout>

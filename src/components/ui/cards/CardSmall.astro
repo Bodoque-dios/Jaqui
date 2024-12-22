@@ -9,6 +9,7 @@ interface productCategory {
   _id: string;
   nombre: string;
   imagen: string;
+  alt: string;
   slug: string;
   description: string;
 }
@@ -32,7 +33,7 @@ const imageClass =
   <!-- The product's main image -->
   <Image
     src={product.imagen}
-    alt={product.imagen}
+    alt={product.alt?? product.description}
     draggable={"false"}
     class={imageClass}
     inferSize={true}
