@@ -88,7 +88,5 @@ const insightsCollection = defineCollection({
 });
 
 export const collections = {
-  'products': productsCollection,
-  'blog': blogCollection,
-  'insights': insightsCollection,
+  'products': productsCollection
 };

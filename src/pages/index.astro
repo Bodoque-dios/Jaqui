@@ -12,12 +12,45 @@ import features from "@data/features.json";
 import featureImage from "@images/features-image.avif";
 import Categories from "@/components/sections/categories/Categories.astro";
 
+import { type QueryParams } from "sanity";
+import { sanityClient } from "sanity:client";
+import {urlForImage} from "../sanity/lib/urlForImage"
+
+
 const carouselUrl = [heroImage, heroImage, heroImage];
 const carouselAlt = [
   "Carousel Image 1",
   "Carousel Image 2",
   "Carousel Image 3",
 ];
+
+
+const query = `*[_type == "category"] {
+  _id,
+  name,
+  image,
+  "imageAlt": image.alt,
+  description,
+}`;
+
+const landingQuery = `*[_type == "landingPage"] {
+  gallery
+}[0]`;
+
+
+const categories = await sanityClient.fetch(query);
+const landingData = await sanityClient.fetch(landingQuery);
+
+console.log(landingData);
+console.log(categories);
+
+const landingImages = landingData.gallery.map((image: any) => {
+  return urlForImage(image).url();
+});
+
+console.log(landingImages);
+
+
 ---
 
 <MainLayout>
@@ -33,7 +66,7 @@ const carouselAlt = [
     primaryBtnURL="/productos"
     secondaryBtn="Contactactanos"
     secondaryBtnURL="/contacto"
-    src={carouselUrl}
+    src={landingImages}
     alt={carouselAlt}
   />
   <Categories />
