@@ -27,10 +27,10 @@ interface Props {
               <Image
                 src={image}
                 alt={alt[index]}
-                class="z-10 h-full w-full scale-110 object-cover object-center"
+                class="z-10 h-full w-full scale-110 object-contain object-center"
                 draggable={"false"}
                 loading={"eager"}
-                format={"avif"}
+                inferSize={true}
               />
             </div>
           ))

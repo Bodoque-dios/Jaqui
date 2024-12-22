@@ -8,7 +8,7 @@ interface Props {
     src: string;
     alt: string;
     title: string;
-    link: string;
+    slug: string;
   };
 }
 ---
@@ -23,7 +23,7 @@ interface Props {
 
   <a
     class="absolute inset-0 flex items-center justify-center bg-black bg-opacity-35 text-white transition-all duration-700 ease-in-out hover:scale-105 hover:bg-opacity-50"
-    href={`productos/${data.link}`}
+    href={`productos/${data.slug}`}
   >
     <h2 class="text-4xl font-bold shadow">{data.title}</h2>
   </a>

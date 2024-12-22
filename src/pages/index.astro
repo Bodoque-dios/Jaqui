@@ -12,12 +12,20 @@ import features from "@data/features.json";
 import featureImage from "@images/features-image.avif";
 import Categories from "@/components/sections/categories/Categories.astro";
 
-import { type QueryParams } from "sanity";
+
 import { sanityClient } from "sanity:client";
 import {urlForImage} from "../sanity/lib/urlForImage"
 
 
-const carouselUrl = [heroImage, heroImage, heroImage];
+
+interface Item {
+  src: string;
+  alt: string;
+  title: string;
+  slug: string;
+}
+
+//TODO: this into sanity
 const carouselAlt = [
   "Carousel Image 1",
   "Carousel Image 2",
@@ -25,11 +33,11 @@ const carouselAlt = [
 ];
 
 
-const query = `*[_type == "category"] {
+const categoryQuery = `*[_type == "categoria"] {
   _id,
-  name,
-  image,
-  "imageAlt": image.alt,
+  nombre,
+  imagen,
+  slug,
   description,
 }`;
 
@@ -38,19 +46,23 @@ const landingQuery = `*[_type == "landingPage"] {
 }[0]`;
 
 
-const categories = await sanityClient.fetch(query);
+const categories = await sanityClient.fetch(categoryQuery);
 const landingData = await sanityClient.fetch(landingQuery);
-
-console.log(landingData);
-console.log(categories);
 
 const landingImages = landingData.gallery.map((image: any) => {
   return urlForImage(image).url();
 });
 
-console.log(landingImages);
 
 
+const categoryData: Item[] = categories.map((category: any) => {
+  return {
+    src: urlForImage(category.imagen).url(),
+    alt: category.nombre,
+    title: category.nombre,
+    slug: category.slug.current,
+  };
+});
 ---
 
 <MainLayout>
@@ -69,7 +81,7 @@ console.log(landingImages);
     src={landingImages}
     alt={carouselAlt}
   />
-  <Categories />
+  <Categories data={categoryData} />
   <FeaturesGeneral data={features} />
 
   <FAQ faqs={faqs} />
