@@ -5,13 +5,9 @@ import HeroSection from "@components/sections/landing/HeroSection.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
-import heroImage from "@images/hero-image.avif";
-import faqs from "@data/faqs.json";
+import faqTitle from "@data/faqs.json";
 import features from "@data/features.json";
-
-import featureImage from "@images/features-image.avif";
 import Categories from "@/components/sections/categories/Categories.astro";
-
 
 import { sanityClient } from "sanity:client";
 import {urlForImage} from "../sanity/lib/urlForImage"
@@ -45,15 +41,24 @@ const landingQuery = `*[_type == "landingPage"] {
   gallery
 }[0]`;
 
+const faqQuery = `*[_type == "pregunta"] {
+  "q": pregunta,
+  "a": respuesta
+}`;
 
 const categories = await sanityClient.fetch(categoryQuery);
 const landingData = await sanityClient.fetch(landingQuery);
+const faq = await sanityClient.fetch(faqQuery);
+
+const faqs = {
+  title: faqTitle.title,
+  subTitle: faqTitle.subTitle,
+  faqs: faq,
+};
 
 const landingImages = landingData.gallery.map((image: any) => {
   return urlForImage(image).url();
 });
-
-
 
 const categoryData: Item[] = categories.map((category: any) => {
   return {
@@ -63,6 +68,8 @@ const categoryData: Item[] = categories.map((category: any) => {
     slug: category.slug.current,
   };
 });
+
+
 ---
 
 <MainLayout>

@@ -1,13 +1,13 @@
 ---
 import Icon from "@components/ui/icons/Icon.astro";
 // Define props from Astro
-const { id, collapseId, question, answer, first } = Astro.props;
+const { id, collapseId, q, a, first } = Astro.props;
 // Define TypeScript interface for props
 interface Props {
   id: string;
   collapseId: string;
-  question: string;
-  answer: string;
+  q: string;
+  a: string;
   first?: boolean;
 }
 // Define class names for the accordion and its content
@@ -28,7 +28,7 @@ function getAccordionClass(first: boolean = false) {
     class="hs-accordion-toggle group inline-flex w-full items-center justify-between gap-x-3 text-balance rounded-lg pb-3 text-start font-bold text-neutral-800 outline-none ring-zinc-500 transition hover:text-neutral-500 focus-visible:ring dark:text-neutral-200 dark:ring-zinc-200 dark:hover:text-neutral-400 dark:focus:outline-none md:text-lg"
     aria-controls={collapseId}
   >
-    {question}
+    {q}
     <!-- SVG Icon that is shown when the accordion is NOT active -->
     <Icon name="accordionNotActive" />
 
@@ -43,7 +43,7 @@ function getAccordionClass(first: boolean = false) {
   >
     <!-- The content paragraph -->
     <p class="text-pretty text-neutral-600 dark:text-neutral-400">
-      {answer}
+      {a}
     </p>
   </div>
 </div>
