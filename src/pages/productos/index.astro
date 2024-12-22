@@ -23,9 +23,9 @@ const product: CollectionEntry<"products">[] = (
 );
 
 // Define variables for page content
-const title: string = "Products";
+const title: string = "Productos";
 const subTitle: string =
-  "Explore the durability and precision of ScrewFast tools, designed for both professionals and enthusiasts. Each of our products is crafted with precision and built to last, ensuring you have the right tool for every job.";
+  "Explora la durabilidad y precisión de los productos de Famago, diseñados tanto para profesionales como para entusiastas. Cada uno de nuestros muebles está fabricado con precisión y construido para durar, asegurando que tengas el mueble adecuado para cada espacio.";
 
 // Testimonial data that will be rendered in the component
 const testimonials = [
@@ -61,7 +61,53 @@ const testimonials = [
   },
 ];
 
-const pageTitle: string = `Products | ${SITE.title}`;
+const productos = [
+  {
+    id: 1,
+    categoryName: "Mesas",
+    title: "Mesa de Comedor",
+
+  }
+]
+
+const categories = [
+  {
+    id: 1,
+    name: "Mesas",
+    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
+    imageAlt: "Mesa de Comedor",
+    description: "Descubre nuestra colección de mesas de comedor, diseñadas para durar y adaptarse a cualquier espacio. Cada mesa está hecha a mano con materiales de alta calidad y un diseño atemporal.",
+  },
+  {
+    id: 2,
+    name: "Sillas",
+    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
+    imageAlt: "Silla de Comedor",
+    description: "Nuestras sillas de comedor son el complemento perfecto para cualquier mesa. Diseñadas para la comodidad y la durabilidad, cada silla está hecha a mano con materiales de alta calidad.",
+  },
+  {
+    id: 3,
+    name: "Estanterías",
+    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
+    imageAlt: "Estantería de Madera",
+    description: "Organiza tu espacio con nuestras estanterías de madera, diseñadas para adaptarse a cualquier habitación. Cada estantería está hecha a mano con materiales de alta calidad y un diseño atemporal.",
+  },
+  {
+    id: 4,
+    name: "Escritorios",
+    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
+    imageAlt: "Escritorio de Madera",
+    description: "Crea un espacio de trabajo inspirador con nuestros escritorios de madera. Diseñados para la funcionalidad y la durabilidad, cada escritorio está hecho a mano con materiales de alta calidad.",
+  },
+  {
+    id: 5,
+    name: "Bancos",
+    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
+    imageAlt: "Banco de Madera",
+    description: "Nuestros bancos de madera son el complemento perfecto para cualquier mesa de comedor. Diseñados para la comodidad y la durabilidad, cada banco está hecho a mano con materiales de alta calidad.",
+  },];
+
+const pageTitle: string = `Productos | ${SITE.title}`;
 ---
 
 <MainLayout
@@ -69,17 +115,17 @@ const pageTitle: string = `Products | ${SITE.title}`;
   structuredData={{
     "@context": "https://schema.org",
     "@type": "WebPage",
-    "@id": "https://screwfast.uk/products",
-    "url": "https://screwfast.uk/products",
-    "name": "Hardware Tools | ScrewFast",
-    "description": "Explore the durability and precision of ScrewFast tools, designed for both professionals and enthusiasts.",
+    "@id": "https://famago.cl/productos",
+    "url": "https://famago.cl/productos",
+    "name": "Productos | Famago",
+    "description": "Descubre la calidad y artesanía de los muebles estilo industriales de Famago, diseñados tanto para espacios comerciales como residenciales.",
     "isPartOf": {
       "@type": "WebSite",
-      "url": "https://screwfast.uk",
-      "name": "ScrewFast",
-      "description": "ScrewFast offers top-tier hardware tools and expert construction services to meet all your project needs."
+      "url": "https://famago.cl",
+      "name": "Famago",
+      "description": "Famago ofrece muebles de diseño industrial de alta calidad, ideales para el hogar y espacios comerciales. Descubre nuestra colección de mesas, sillas, estanterías y más."
     },
-    "inLanguage": "en-US"
+    "inLanguage": "es-CL"
   }}
 >
   <div
@@ -100,7 +146,7 @@ const pageTitle: string = `Products | ${SITE.title}`;
           )
         }
       </div>
-      <PrimaryCTA title="Customer Stories" url="#testimonials" noArrow={true} />
+  
     </div>
     <!--Displaying products in alternating styles. Alternative product gets different card styling.-->
     <!--Maps through all product entries and displays them with either CardSmall or CardWide based on their position.-->
@@ -117,19 +163,11 @@ const pageTitle: string = `Products | ${SITE.title}`;
       }
     </section>
   </div>
-  <!--Features statistics section-->
-  <FeaturesStatsAlt
-    title="Why Choose ScrewFast?"
-    subTitle="Transform your ideas into tangible results with ScrewFast tools. Whether you're starting with a sketch on a napkin or diving into a comprehensive construction project, our tools are engineered to help you build with confidence."
-    benefits={[
-      "Robust and reliable tools for long-lasting performance.",
-      "Innovative solutions tailored to modern construction needs.",
-      "Customer support dedicated to your project's success.",
-    ]}
-  />
+  {/*
   <!--Testimonials section-->
   <TestimonialsSectionAlt
-    title="What Our Customers Say"
-    testimonials={testimonials}
+  title="What Our Customers Say"
+  testimonials={testimonials}
   />
+   */}
 </MainLayout>
