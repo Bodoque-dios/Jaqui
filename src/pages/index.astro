@@ -8,6 +8,7 @@ import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro"
 import faqTitle from "@data/faqs.json";
 import features from "@data/features.json";
 import Categories from "@/components/sections/categories/Categories.astro";
+import { whatsapplink } from "@data/constants";
 
 import { sanityClient } from "sanity:client";
 import {urlForImage} from "../sanity/lib/urlForImage"
@@ -76,7 +77,7 @@ const categoryData: Item[] = categories.map((category: any) => {
   <AnnouncementBanner
     btnId="dismiss-button"
     btnTitle="Háblanos de tu proyecto"
-    url="AQUI PONER LINK DE WASA"
+    url={whatsapplink}
   />
   <HeroSection
     title={`Dale un toque único a tus espacios con <span class="text-yellow-500 dark:text-yellow-400">Famago</span>`}

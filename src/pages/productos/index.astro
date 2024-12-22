@@ -4,13 +4,13 @@ import MainLayout from "@/layouts/MainLayout.astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 import CardSmall from "@components/ui/cards/CardSmall.astro";
 import CardWide from "@components/ui/cards/CardWide.astro";
-import FeaturesStatsAlt from "@components/sections/features/FeaturesStatsAlt.astro";
-import TestimonialsSectionAlt from "@components/sections/testimonials/TestimonialsSectionAlt.astro";
 
 // Importing necessary functions from Astro
 import { getCollection } from "astro:content";
 import type { CollectionEntry } from "astro:content";
 import { SITE } from "@data/constants";
+import { sanityClient } from "sanity:client";
+import { urlForImage } from "@/sanity/lib/urlForImage";
 
 // Fetching all the product related content and sorting it by main.id
 const product: CollectionEntry<"products">[] = (
@@ -19,93 +19,39 @@ const product: CollectionEntry<"products">[] = (
   })
 ).sort(
   (a: CollectionEntry<"products">, b: CollectionEntry<"products">) =>
-    a.data.main.id - b.data.main.id,
+    a.data.main.id - b.data.main.id
 );
+
+const categoryQuery = `*[_type == "categoria"] {
+  _id,
+  nombre,
+  imagen,
+  slug,
+  descripcion,
+}`;
+const categoriesResult = await sanityClient.fetch(categoryQuery);
+interface productCategory {
+  _id: string;
+  nombre: string;
+  imagen: string;
+  slug: string;
+  description: string;
+}
+
+const categories: productCategory[] = categoriesResult.map((category: any) => {
+  return {
+    _id: category._id,
+    nombre: category.nombre,
+    imagen: urlForImage(category.imagen).url(),
+    slug: category.slug.current,
+    description: category.descripcion,
+  };
+});
 
 // Define variables for page content
 const title: string = "Productos";
 const subTitle: string =
   "Explora la durabilidad y precisión de los productos de Famago, diseñados tanto para profesionales como para entusiastas. Cada uno de nuestros muebles está fabricado con precisión y construido para durar, asegurando que tengas el mueble adecuado para cada espacio.";
-
-// Testimonial data that will be rendered in the component
-const testimonials = [
-  // First testimonial data
-  {
-    content:
-      " \"Since switching to ScrewFast's hardware tools, the efficiency on our construction sites has skyrocketed. The durability of the hex bolts and precision of the machine screws are simply unmatched. It's refreshing to work with a company that truly understands the daily demands of the industry.\" ",
-    author: "Jason Clark",
-    role: "Site Foreman | TopBuild",
-    avatarSrc:
-      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1374&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    avatarAlt: "Image Description",
-  },
-  // Second testimonial data
-  {
-    content:
-      " \"As an interior designer, I'm always looking for high-quality materials and tools that help bring my visions to life. ScrewFast's mixed screws assortment has been a game-changer for my projects, providing the perfect blend of quality and variety. The outstanding customer support was just the cherry on top!\" ",
-    author: "Maria Gonzalez",
-    role: "Interior Designer | Creative Spaces",
-    avatarSrc:
-      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=1376&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    avatarAlt: "Image Description",
-  },
-  // Third testimonial data
-  {
-    content:
-      " \"I’ve been a professional carpenter for over 15 years, and I can sincerely say that ScrewFast’s tap bolts and nuts are some of the best I've used. They grip like no other, and I have full confidence in every joint and fixture. Plus, the service is impeccable – they truly care about my project's success.\" ",
-    author: "Richard Kim",
-    role: "Master Carpenter | WoodWright",
-    avatarSrc:
-      "https://images.unsplash.com/photo-1474176857210-7287d38d27c6?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D8&auto=format&fit=facearea&facepad=2&w=320&h=320&q=80",
-    avatarAlt: "Image Description",
-  },
-];
-
-const productos = [
-  {
-    id: 1,
-    categoryName: "Mesas",
-    title: "Mesa de Comedor",
-
-  }
-]
-
-const categories = [
-  {
-    id: 1,
-    name: "Mesas",
-    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
-    imageAlt: "Mesa de Comedor",
-    description: "Descubre nuestra colección de mesas de comedor, diseñadas para durar y adaptarse a cualquier espacio. Cada mesa está hecha a mano con materiales de alta calidad y un diseño atemporal.",
-  },
-  {
-    id: 2,
-    name: "Sillas",
-    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
-    imageAlt: "Silla de Comedor",
-    description: "Nuestras sillas de comedor son el complemento perfecto para cualquier mesa. Diseñadas para la comodidad y la durabilidad, cada silla está hecha a mano con materiales de alta calidad.",
-  },
-  {
-    id: 3,
-    name: "Estanterías",
-    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
-    imageAlt: "Estantería de Madera",
-    description: "Organiza tu espacio con nuestras estanterías de madera, diseñadas para adaptarse a cualquier habitación. Cada estantería está hecha a mano con materiales de alta calidad y un diseño atemporal.",
-  },
-  {
-    id: 4,
-    name: "Escritorios",
-    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
-    imageAlt: "Escritorio de Madera",
-    description: "Crea un espacio de trabajo inspirador con nuestros escritorios de madera. Diseñados para la funcionalidad y la durabilidad, cada escritorio está hecho a mano con materiales de alta calidad.",
-  },
-  {
-    id: 5,
-    name: "Bancos",
-    image: "https://images.unsplash.com/photo-1556740731-4c6f6d255b25?q=80&w=1080&dpr=1.5",
-    imageAlt: "Banco de Madera",
-    description: "Nuestros bancos de madera son el complemento perfecto para cualquier mesa de comedor. Diseñados para la comodidad y la durabilidad, cada banco está hecho a mano con materiales de alta calidad.",
-  },];
 
 const pageTitle: string = `Productos | ${SITE.title}`;
 ---
@@ -116,16 +62,18 @@ const pageTitle: string = `Productos | ${SITE.title}`;
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": "https://famago.cl/productos",
-    "url": "https://famago.cl/productos",
-    "name": "Productos | Famago",
-    "description": "Descubre la calidad y artesanía de los muebles estilo industriales de Famago, diseñados tanto para espacios comerciales como residenciales.",
-    "isPartOf": {
+    url: "https://famago.cl/productos",
+    name: "Productos | Famago",
+    description:
+      "Descubre la calidad y artesanía de los muebles estilo industriales de Famago, diseñados tanto para espacios comerciales como residenciales.",
+    isPartOf: {
       "@type": "WebSite",
-      "url": "https://famago.cl",
-      "name": "Famago",
-      "description": "Famago ofrece muebles de diseño industrial de alta calidad, ideales para el hogar y espacios comerciales. Descubre nuestra colección de mesas, sillas, estanterías y más."
+      url: "https://famago.cl",
+      name: "Famago",
+      description:
+        "Famago ofrece muebles de diseño industrial de alta calidad, ideales para el hogar y espacios comerciales. Descubre nuestra colección de mesas, sillas, estanterías y más.",
     },
-    "inLanguage": "es-CL"
+    inLanguage: "es-CL",
   }}
 >
   <div
@@ -146,28 +94,23 @@ const pageTitle: string = `Productos | ${SITE.title}`;
           )
         }
       </div>
-  
     </div>
-    <!--Displaying products in alternating styles. Alternative product gets different card styling.-->
-    <!--Maps through all product entries and displays them with either CardSmall or CardWide based on their position.-->
-    <section class="grid grid-cols-1 gap-4 sm:grid-cols-3 md:gap-6 xl:gap-8">
+  
+    <section class="grid grid-cols-1 gap-4 md:grid-cols-3 sm:grid-cols-2 md:gap-6 xl:gap-8">
       {
-        product.map((product, index) => {
-          const position = index % 4;
-          if (position === 0 || position === 3) {
-            return <CardSmall product={product} />;
-          } else {
-            return <CardWide product={product} />;
-          }
+        categories.map((product, index) => {
+          return <CardSmall product={product} />;
         })
       }
     </section>
   </div>
-  {/*
+  {
+    /*
   <!--Testimonials section-->
   <TestimonialsSectionAlt
   title="What Our Customers Say"
   testimonials={testimonials}
   />
-   */}
+   */
+  }
 </MainLayout>
