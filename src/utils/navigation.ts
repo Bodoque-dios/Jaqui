@@ -19,15 +19,14 @@ const footerLinks = [
   {
     section: "Nosotros",
     links: [
-      { name: "Sobre nosotros", url: "#" },
-      { name: "Blog", url: "/blog" },
-      { name: "Opiniones", url: "#" },
+      { name: "Sobre nosotros", url: "/nosotros" },
+//      { name: "Opiniones", url: "#" },
     ],
   },
   {
     section:"Ayuda",
     links:[
-      {name:"Preguntas frecuentes", url:"/faq"},
+      {name:"Preguntas frecuentes", url:"/preguntas-frecuentes"},
       {name:"Envios y devoluciones", url:"/envios"},
       {name:"Consejos para el cuidado de muebles", url:"/cuidados"},
       {name:"Contáctanos", url:"/contacto"},

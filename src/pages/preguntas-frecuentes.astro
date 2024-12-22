@@ -1,0 +1,46 @@
+---
+// Importar los componentes necesarios
+import FAQ from "@/components/sections/misc/FAQ_PAGE.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import ContactSection from "@components/sections/misc/ContactSection.astro";
+import faqTitle from "@data/faqs.json";
+import { SITE } from "@data/constants";
+import { sanityClient } from "sanity:client";
+
+const faqQuery = `*[_type == "pregunta"] {
+  "q": pregunta,
+  "a": respuesta
+}`;
+const faq = await sanityClient.fetch(faqQuery);
+const faqs = {
+  title: faqTitle.title,
+  subTitle: faqTitle.subTitle,
+  faqs: faq,
+};
+
+const pageTitle: string = `Preguntas Frecuentes | ${SITE.title}`;
+---
+
+<!--Utilizando MainLayout para el diseño exterior de la página y definiendo meta para propósitos de SEO-->
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://famago.cl/preguntas-frecuentes",
+    "url": "https://famago.cl/preguntas-frecuentes ",
+    "name": "Preguntas Frecuentes | Famago",
+    "description":
+      "¿Tienes preguntas o quieres discutir un proyecto? Contáctanos y crearemos la solución perfecta con nuestras herramientas y servicios.",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://famago.cl|",
+      "name": "Famago",
+      "description":
+        "Famago ofrece muebles de diseño industrial de alta calidad, ideales para el hogar y la oficina.",
+    },
+    "inLanguage": "es-CL"
+  }}
+>
+  <FAQ faqs={faqs} /> 
+</MainLayout>

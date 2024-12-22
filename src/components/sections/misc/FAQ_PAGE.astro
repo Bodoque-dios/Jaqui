@@ -1,0 +1,98 @@
+---
+// Import the necessary AccordionItem component and JSON data
+import AccordionItem from "@components/ui/blocks/AccordionItem.astro";
+import { whatsapplink } from "@data/constants";
+import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
+import Whatsapp from "@/components/ui/icons/whatsapp.astro";
+
+// Define props from Astro
+const { faqs } = Astro.props;
+
+// Define TypeScript interface for props
+interface Faq {
+  q: string;
+  a: string;
+}
+
+interface FaqGroup {
+  title: string;
+  subTitle: string;
+  faqs: Faq[];
+}
+
+interface Props {
+  faqs: FaqGroup;
+}
+// Define a helper function to generate ids dynamically.
+const makeId = (base: any, index: any) => `${base}${index + 1}`;
+
+const title: string = "Preguntas Frecuentes";
+const subTitle: string =
+  "Aquí encontrarás las respuestas a las preguntas más comunes que nuestros clientes nos hacen.";
+---
+
+<!-- Main container that holds all content. Customized for different viewport sizes. -->
+<section
+  class="mx-auto max-w-[85rem] px-4 py-10 sm:px-6 lg:px-8 lg:py-14 2xl:max-w-full"
+>
+  <div class="text-center">
+    <h1
+      class="text-balance text-2xl font-bold tracking-tight text-neutral-800 dark:text-neutral-200 md:text-4xl md:leading-tight"
+    >
+      {title}
+    </h1>
+    <p class="mt-1 text-pretty text-neutral-600 dark:text-neutral-400">
+      {subTitle}
+    </p>
+  </div>
+
+  <div class="mx-auto max-w-2xl lg:max-w-5xl">
+    <div class="mt-12 gap-10">
+      <div
+        class="hs-accordion-group divide-y divide-neutral-200 dark:divide-neutral-700"
+      >
+        {
+          faqs.faqs.map((question, i) => {
+            // Generate ids dynamically for each FAQ accordion item.
+            let id = makeId(
+              "hs-basic-with-title-and-arrow-stretched-heading-",
+              i
+            );
+            let collapseId = makeId(
+              "hs-basic-with-title-and-arrow-stretched-collapse",
+              i
+            );
+
+            return (
+              <AccordionItem
+                {...question}
+                id={id}
+                collapseId={collapseId}
+                first={i === 0}
+              />
+            );
+          })
+        }
+      </div>
+    </div>
+  </div>
+  <div class="flex flex-col grow h-full">
+    <div class="flex-grow"></div>
+  </div>
+  <div class="mt-12 text-center">
+    <p class="text-neutral-600 dark:text-neutral-400">
+      ¿No encontraste lo que buscabas? Contáctanos y te ayudaremos.
+    </p>
+    <div class="mt-4 flex items-center justify-center gap-4">
+      <PrimaryCTA title="Contáctanos" url={"/contacto"} noArrow />
+
+      <PrimaryCTA title="WhatsApp" url={whatsapplink} noArrow />
+    </div>
+  </div>
+
+  <!--Import the necessary Accordion plugin-->
+  <!--https://preline.co/plugins/html/accordion.html-->
+  <script>
+    import "@preline/accordion/index.js";
+  </script>
+</section>
