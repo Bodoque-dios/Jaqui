@@ -1,17 +1,13 @@
 ---
 // Import section components
 import MainLayout from "@/layouts/MainLayout.astro";
-import ProductTabBtn from "@components/ui/buttons/ProductTabBtn.astro";
 import PrimaryCTA from "@components/ui/buttons/PrimaryCTA.astro";
 import { Image } from "astro:assets";
-import { getCollection } from "astro:content";
 import { SITE } from "@data/constants";
 import { sanityClient } from "sanity:client";
 import { urlForImage } from "@/sanity/lib/urlForImage";
 import { whatsapplink } from "@data/constants";
 import Carousel from "@/components/sections/landing/Carousel.astro";
-import { undefined } from "astro:schema";
-import { ImageNotFound } from "node_modules/astro/dist/core/errors/errors-data";
 
 // Global declaration for gsap animation library
 declare global {
