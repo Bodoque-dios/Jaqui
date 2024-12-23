@@ -53,6 +53,9 @@ const productsQuery = `*[_type == "producto" && categoria._ref == $categoryId] {
   slug,
   descripcion,
   alt,
+  categoria->{
+    slug
+  }
 }`;
 
 const productsResult = await sanityClient.fetch(productsQuery, {
@@ -67,6 +70,7 @@ const products = productsResult.map((product: any) => {
     slug: product.slug.current,
     description: product.nombre,
     alt: product.alt ?? product.descripcion,
+    categorySlug: product.categoria.slug.current,
   };
 });
 
