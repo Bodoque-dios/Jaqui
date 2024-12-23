@@ -9,6 +9,9 @@ import { SITE } from "@data/constants";
 import { sanityClient } from "sanity:client";
 import { urlForImage } from "@/sanity/lib/urlForImage";
 import { whatsapplink } from "@data/constants";
+import Carousel from "@/components/sections/landing/Carousel.astro";
+import { undefined } from "astro:schema";
+import { ImageNotFound } from "node_modules/astro/dist/core/errors/errors-data";
 
 // Global declaration for gsap animation library
 declare global {
@@ -18,17 +21,17 @@ declare global {
 }
 interface Product {
   _id: string;
-  _type: 'producto';
+  _type: "producto";
   nombre: string;
   descripcion_corta: string;
   imagen: string;
   alt: string;
   imagenes_adicionales?: {
     imagen: {
-      _type: 'image';
+      _type: "image";
       asset: {
         _ref: string;
-        _type: 'reference';
+        _type: "reference";
       };
     };
     alt: string;
@@ -40,19 +43,18 @@ interface Product {
     description: string;
   }[];
   slug: {
-    _type: 'slug';
+    _type: "slug";
     current: string;
   };
   categoria: {
-    _type: 'reference';
+    _type: "reference";
     _ref: string;
     slug: {
-      _type: 'slug';
+      _type: "slug";
       current: string;
-    }
+    };
   };
 }
-
 
 interface Props {
   product: Product;
@@ -64,28 +66,36 @@ const pageTitle: string = `${product.nombre} | ${SITE.title}`;
 
 export async function getStaticPaths() {
   const categoryQuery = `*[_type == "producto"]{
-...,
-   categoria-> {
-      slug
-    }
-}`;
+    ...,
+    categoria-> {
+        slug
+      }
+  }`;
 
   const categories = await sanityClient.fetch(categoryQuery);
+  //console.log(categories);
   return categories.map((category: any) => {
-    return {
+    const data = {
       params: {
         categoria: category.categoria.slug.current,
         producto: category.slug.current,
       },
       props: {
-        product: {...category, imagen: urlForImage(category.imagen).url()},
+        product: { ...category, imagen: urlForImage(category.imagen).url() },
       },
     };
+    return data;
   });
 }
-
-const whatsappMessage = whatsapplink + `?text=Hola, me interesa el producto [${product.nombre}] de la categoría [${product.categoria.slug.current}]. ¿Me podrías dar más información?`;
-
+const carouselImages = product.imagenes_adicionales
+  ? product.imagenes_adicionales.map((img) => urlForImage(img.imagen).url())
+  : [];
+const carouselAlts = product.imagenes_adicionales
+  ? product.imagenes_adicionales.map((img) => img.alt)
+  : [];
+const whatsappMessage =
+  whatsapplink +
+  `?text=Hola, me interesa el producto [${product.nombre}] de la categoría [${product.categoria.slug.current}]. ¿Me podrías dar más información?`;
 ---
 
 <MainLayout title={pageTitle}>
@@ -108,16 +118,23 @@ const whatsappMessage = whatsapplink + `?text=Hola, me interesa el producto [${p
           {product.descripcion_corta}
         </p>
       </div>
-      <div>
-        <Image
-          id="fadeInMoveRight"
-          src={product.imagen}
-          class="w-full h-full max-w-[500px] max-h-[500px] object-cover object-center rounded-lg shadow-lg"
-          alt={product.alt}
-          loading={"eager"}
-          inferSize={true}
-        />
-      </div>
+      
+      {
+        product.imagenes_adicionales ? (
+          <div class="h-96 min-w-96 max-h-[500px] w-auto max-w-[500px]">
+            <Carousel src={[product.imagen, ...carouselImages]} alt={[product.alt, ...carouselAlts]} />
+          </div>
+        ) : (
+          <Image
+            id="fadeInMoveRight"
+            src={product.imagen}
+            class="h-full max-h-[500px] w-full max-w-[500px] rounded-lg object-cover object-center shadow-lg"
+            alt={product.alt}
+            loading={"eager"}
+            inferSize={true}
+          />
+        )
+      }
     </div>
   </section>
 
@@ -138,27 +155,25 @@ const whatsappMessage = whatsapplink + `?text=Hola, me interesa el producto [${p
                 {product.descripcion_larga}
               </p>
               <p class="mt-5">
-                <PrimaryCTA
-                  title={"Lo quiero"}
-                  url={whatsappMessage}
-                />
+                <PrimaryCTA title={"Lo quiero"} url={whatsappMessage} />
               </p>
             </div>
 
             <div class="space-y-6 lg:space-y-10">
-              { product.caracteristicas &&
-                product.caracteristicas.map((list) => (
-                  <div class="flex">
-                    <div>
-                      <h3 class="text-base font-bold text-neutral-800 dark:text-neutral-200 sm:text-lg">
-                        {list.title}
-                      </h3>
-                      <p class="mt-1 text-neutral-600 dark:text-neutral-400">
-                        {list.description}
-                      </p>
+              {
+                product.caracteristicas &&
+                  product.caracteristicas.map((list) => (
+                    <div class="flex">
+                      <div>
+                        <h3 class="text-base font-bold text-neutral-800 dark:text-neutral-200 sm:text-lg">
+                          {list.title}
+                        </h3>
+                        <p class="mt-1 text-neutral-600 dark:text-neutral-400">
+                          {list.description}
+                        </p>
+                      </div>
                     </div>
-                  </div>
-                ))
+                  ))
               }
             </div>
           </div>

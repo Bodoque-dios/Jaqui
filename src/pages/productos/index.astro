@@ -95,7 +95,7 @@ const pageTitle: string = `Productos | ${SITE.title}`;
     <section class="grid grid-cols-1 gap-4 md:grid-cols-3 sm:grid-cols-2 md:gap-6 xl:gap-8">
       {
         categories.map((product, index) => {
-          return <CardSmall product={product} />;
+          return <CardSmall product={product} isCategory={true}  />;
         })
       }
     </section>

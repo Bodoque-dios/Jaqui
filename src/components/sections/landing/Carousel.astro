@@ -19,10 +19,11 @@ interface Props {
       class="hs-carousel relative h-full min-h-64 w-full overflow-hidden rounded-lg"
     >
       <div
-        class="hs-carousel-body absolute bottom-0 start-0 top-0 flex h-full w-full flex-nowrap opacity-0 transition-transform duration-700"
+        class="hs-carousel-body absolute bottom-0 start-0 top-0 flex h-full w-full flex-nowrap opacity-0 gap-12 transition-transform duration-700"
       >
         {
           src.map((image, index) => (
+            console.log(image),
             <div class="hs-carousel-slide h-full w-full">
               <Image
                 src={image}
@@ -89,3 +90,6 @@ interface Props {
     </div>
   </div>
 </div>
+<script>
+  import "@preline/carousel/index.js";
+</script>
