@@ -16,11 +16,20 @@ let paths: Path[] = icon.paths || [];
 
 {
   name === "chile" ? (
-    <img
-      src="https://raw.githubusercontent.com/tabler/tabler-flags/b9b6b2c8b33900c13033c01cf8440aadc9a9b276/flags/chile.svg"
-      alt="Chile"
-      class="h-6 w-6"
-    />
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      height="60"
+      width="90"
+      viewBox="0 0 30 24"
+    >
+      <path fill="#c73a29" d="M30 24H0V12h30z" />
+      <path fill="#fff" d="M30 12H0V0h30z" />
+      <path fill="#1435a1" d="M0 0h12v12H0z" />
+      <path
+        fill="#fff"
+        d="M7.15 6.67 9 5.33H6.7L6 3.15l-.7 2.18H3l1.85 1.34-.7 2.18L6 7.51l1.86 1.34z"
+      />
+    </svg>
   ) : icon ? (
     <svg
       class={icon.class}
