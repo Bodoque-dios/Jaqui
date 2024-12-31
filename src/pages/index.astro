@@ -5,7 +5,6 @@ import HeroSection from "@components/sections/landing/HeroSection.astro";
 import FeaturesGeneral from "@components/sections/features/FeaturesGeneral.astro";
 import FAQ from "@components/sections/misc/FAQ.astro";
 import AnnouncementBanner from "@components/ui/banners/AnnouncementBanner.astro";
-import faqTitle from "@data/faqs.json";
 import features from "@data/features.json";
 import Categories from "@/components/sections/categories/Categories.astro";
 import { whatsapplink } from "@data/constants";
@@ -52,8 +51,8 @@ const landingData = await sanityClient.fetch(landingQuery);
 const faq = await sanityClient.fetch(faqQuery);
 
 const faqs = {
-  title: faqTitle.title,
-  subTitle: faqTitle.subTitle,
+  title: "Preguntas Frecuentes",
+  subTitle: "Aquí encontrarás las respuestas a las preguntas más comunes que nuestros clientes nos hacen.",
   faqs: faq,
 };
 

@@ -11,9 +11,9 @@ const footerLinks = [
   {
     section: "Tienda",
     links: [
-      { name: "Dormitorio", url: "/welcome-to-docs/" },
-      { name: "Comedores", url: "/products" },
-      { name: "Oficina", url: "/services" },
+      { name: "Productos", url: "/productos" },
+     // { name: "Comedores", url: "/products" },
+     // { name: "Oficina", url: "/services" },
     ],
   },
   {
@@ -27,8 +27,8 @@ const footerLinks = [
     section:"Ayuda",
     links:[
       {name:"Preguntas frecuentes", url:"/preguntas-frecuentes"},
-      {name:"Envios y devoluciones", url:"/envios"},
-      {name:"Consejos para el cuidado de muebles", url:"/cuidados"},
+      //{name:"Envios y devoluciones", url:"/envios"},
+      //{name:"Consejos para el cuidado de muebles", url:"/cuidados"},
       {name:"Contáctanos", url:"/contacto"},
     ]
   }
@@ -37,7 +37,7 @@ const footerLinks = [
 const socialLinks = {
   facebook: "#",
   x: "#",
-  github: "https://github.com/mearashadowfax/ScrewFast",
+  //github: "https://github.com/mearashadowfax/ScrewFast",
   google: "#",
   slack: "#",
 };

@@ -69,7 +69,6 @@ export async function getStaticPaths() {
   }`;
 
   const categories = await sanityClient.fetch(categoryQuery);
-  //console.log(categories);
   return categories.map((category: any) => {
     const data = {
       params: {
