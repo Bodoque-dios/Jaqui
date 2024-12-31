@@ -38,4 +38,4 @@ export const OG = {
   image: ogImageSrc,
 };
 
-export const whatsapplink = "https://wa.me/56994400000";
+export const whatsapplink = "https://wa.me/56963421451";

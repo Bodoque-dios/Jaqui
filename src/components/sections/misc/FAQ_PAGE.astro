@@ -6,7 +6,7 @@ import PrimaryCTA from "@/components/ui/buttons/PrimaryCTA.astro";
 import Whatsapp from "@/components/ui/icons/whatsapp.astro";
 
 // Define props from Astro
-const { faqs } = Astro.props;
+const { faqs, title, subTitle } = Astro.props;
 
 // Define TypeScript interface for props
 interface Faq {
@@ -15,20 +15,18 @@ interface Faq {
 }
 
 interface FaqGroup {
-  title: string;
-  subTitle: string;
   faqs: Faq[];
 }
 
 interface Props {
+  title: string;
+  subTitle: string;
   faqs: FaqGroup;
 }
 // Define a helper function to generate ids dynamically.
 const makeId = (base: any, index: any) => `${base}${index + 1}`;
 
-const title: string = "Preguntas Frecuentes";
-const subTitle: string =
-  "Aquí encontrarás las respuestas a las preguntas más comunes que nuestros clientes nos hacen.";
+
 ---
 
 <!-- Main container that holds all content. Customized for different viewport sizes. -->

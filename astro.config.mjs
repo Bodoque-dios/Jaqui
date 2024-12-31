@@ -28,7 +28,6 @@ export default defineConfig({
       defaultLocale: "es", // All urls that don't contain `en` after `https://screwfast.uk/` will be treated as default locale, i.e. `es`
       locales: {
         es: "es", // The `defaultLocale` value must present in `locales` keys
-        en: "en",
       },
     },
   }), compressor({
