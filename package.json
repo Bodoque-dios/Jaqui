@@ -22,7 +22,7 @@
     "@sanity/astro": "^3.1.9",
     "@sanity/client": "^6.24.1",
     "@sanity/image-url": "^1.1.0",
-    "@sanity/visual-editing": "^2.11.3",
+    "@sanity/visual-editing": "^2.11.4",
     "astro": "^4.16.16",
     "astro-compressor": "^1.0.0",
     "clipboard": "^2.0.11",
