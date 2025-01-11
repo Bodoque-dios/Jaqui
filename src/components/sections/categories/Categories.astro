@@ -17,15 +17,10 @@ interface Props {
 }
 
 const chunk = (arr: any[], cols: number): any[][] => {
-  if (arr.length === 0) {
-    return [];
-  }
-  const arraySize = Math.ceil(arr.length / cols);
-  const newArray: any[][] = [];
-
-  for (let i = 0; i < arr.length; i += arraySize) {
-    newArray.push(arr.slice(i, i + arraySize));
-  }
+  const newArray: any[][] = Array.from({ length: cols }, () => []);
+  arr.forEach((item, index) => {
+    newArray[index % cols].push(item);
+  });
 
   return newArray;
 };
