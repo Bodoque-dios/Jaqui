@@ -1,0 +1,32 @@
+---
+// Importar los componentes necesarios
+import CustomFurniture from "@/components/sections/misc/CustomFurniture.astro";
+import MainLayout from "@/layouts/MainLayout.astro";
+import { SITE } from "@data/constants";
+
+const pageTitle: string = `Muebles a Pedido | ${SITE.title}`;
+---
+
+<!--Utilizando MainLayout para el diseño exterior de la página y definiendo meta para propósitos de SEO-->
+<MainLayout
+  title={pageTitle}
+  structuredData={{
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": "https://famago.cl/muebles-a-pedido",
+    "url": "https://famago.cl/muebles-a-pedido ",
+    "name": "Muebles a Pedido | Famago",
+    "description":
+    "Quieres un mueble personalizado? Contáctanos y juntos crearemos la solución perfecta",
+    "isPartOf": {
+      "@type": "WebSite",
+      "url": "https://famago.cl|",
+      "name": "Famago",
+      "description":
+        "Famago ofrece muebles de diseño industrial de alta calidad, ideales para el hogar y la oficina.",
+    },
+    "inLanguage": "es-CL"
+  }}
+>
+  <CustomFurniture />
+</MainLayout>

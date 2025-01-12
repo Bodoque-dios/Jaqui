@@ -6,16 +6,13 @@ import TextInput from "@components/ui/forms/input/TextInput.astro";
 import EmailContactInput from "@components/ui/forms/input/EmailContactInput.astro";
 import PhoneInput from "@components/ui/forms/input/PhoneInput.astro";
 import TextAreaInput from "@components/ui/forms/input/TextAreaInput.astro";
-import Icon from "@components/ui/icons/Icon.astro";
-import Whatsapp from "@/components/ui/icons/whatsapp.astro";
-import { whatsapplink } from "@data/constants.ts";
 // Define the variables that will be used in this component
-const title: string = "Contáctanos";
+const title: string = "Muebles a Pedido";
 const subTitle: string =
-  "¿Tienes preguntas o quieres discutir un proyecto? Contáctanos y creemos la solución perfecta.";
-const formTitle: string = "Complete el formulario a continuación";
+"¿Estás buscando un mueble personalizado? ¡Contáctanos y diseñemos juntos la solución perfecta!";
+const formTitle: string = "Completa el formulario a continuación:";
 const formSubTitle: string =
-  "Nos pondremos en contacto con usted en 1-5 días hábiles.";
+  "Nos pondremos en contacto en 1-5 días hábiles.";
 ---
 
 <!-- Contact Us -->
@@ -32,16 +29,14 @@ const formSubTitle: string =
       </p>
     </div>
 
-    <div class="mt-12 grid items-center gap-6 lg:grid-cols-2 lg:gap-16">
+    <div class="mt-10 mx-auto items-center gap-6 lg:grid-cols-2 lg:gap-16">
       <div class="flex flex-col rounded-xl p-4 sm:p-6 lg:p-8">
         <h2
           class="mb-8 text-xl font-bold text-neutral-700 dark:text-neutral-300"
         >
           {formTitle}
         </h2>
-        <!-- Form for user input with various input fields.-->
-        <!-- Each field utilizes a different input component for the specific type of input (text, email, phone, and textarea)-->
-        <form id="contact-form">
+        <form id="contact-form" class="mx-0">
           <div class="grid gap-4">
             <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <TextInput
@@ -59,13 +54,13 @@ const formSubTitle: string =
             <PhoneInput id="hs-phone-number" />
             <TextAreaInput
               id="hs-about-contacts"
-              label="Cuentanos más sobre tu consulta"
+              label="Cuentanos más sobre tu proyecto, recuerda incluir medidas y detalles importantes. Puedes incluir links a imágenes o referencias."
               name="hs-about-contacts"
             />
           </div>
 
           <div class="mt-4 grid">
-            <AuthBtn title="Enviar mensaje" />
+            <AuthBtn title="¡Envía tu idea y comencemos tu mueble personalizado!" />
           </div>
 
           <div class="mt-3 text-center">
@@ -74,36 +69,6 @@ const formSubTitle: string =
             </p>
           </div>
         </form>
-      </div>
-      <!--ContactIconBlocks se utilizan para mostrar diferentes métodos de contacto, incluyendo visitar la oficina, correo electrónico, navegar por la base de conocimientos y FAQ.-->
-      <div class="divide-y divide-neutral-300 dark:divide-neutral-700">
-        <ContactIconBlock
-          heading="Preguntas Frecuentes"
-          content="Explora nuestras preguntas frecuentes para obtener respuestas rápidas y claras a preguntas comunes."
-          isLinkVisible={true}
-          linkTitle="Visitar FAQ"
-          linkURL="/preguntas-frecuentes"
-          isArrowVisible={true}
-          ><Icon name="chatBubble" />
-        </ContactIconBlock>
-        <ContactIconBlock
-          heading="Habla con nosotros por WhatsApp"
-          content="¿Prefieres chatear? Contáctanos a través de WhatsApp para obtener respuestas rápidas."
-          isLinkVisible={true}
-          linkTitle="Chatear en WhatsApp"
-          linkURL={whatsapplink}
-          isArrowVisible={true}
-          ><Whatsapp />
-        </ContactIconBlock>
-
-        <ContactIconBlock
-          heading="Contáctanos por correo electrónico"
-          content="¿Prefieres la palabra escrita? Envíanos un correo electrónico a"
-          isLinkVisible={true}
-          linkTitle="contacto@famago.cl"
-          linkURL="#"
-          ><Icon name="envelopeOpen" />
-        </ContactIconBlock>
       </div>
     </div>
   </div>

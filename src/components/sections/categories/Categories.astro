@@ -38,10 +38,10 @@ const cols2 = chunk(data, 2);
     <p class="mb-8 ps-4 text-neutral-700 dark:text-neutral-400 lg:w-4/5">
       {subtitle}
     </p>
-    <div class="mx-auto grid grid-cols-1 sm:grid-cols-2 gap-2 px-4 md:grid-cols-3 ">
+    <div class="mx-auto grid grid-cols-1 sm:grid-cols-2 gap-2 px-4 lg:grid-cols-3 ">
       {
         cols3.map((col: any[]) => (
-          <div class="hidden space-y-2 md:block">
+          <div class="hidden space-y-2 lg:block">
             {col.map((item: Item) => (
               <Category data={item} />
             ))}
@@ -50,7 +50,7 @@ const cols2 = chunk(data, 2);
       }
       {
         cols2.map((col: any[]) => (
-          <div class="space-y-2 hidden sm:block md:hidden">
+          <div class="space-y-2 hidden sm:block lg:hidden">
             {col.map((item: Item) => (
               <Category data={item} />
             ))}
