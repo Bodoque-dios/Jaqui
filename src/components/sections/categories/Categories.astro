@@ -7,14 +7,13 @@ interface Item {
   title: string;
   slug: string;
 }
-
-const {
-  data
-} = Astro.props
-
 interface Props {
   data: Item[];
+  title: string;
+  subtitle: string;
 }
+
+const { data, title, subtitle } = Astro.props;
 
 const chunk = (arr: any[], cols: number): any[][] => {
   const newArray: any[][] = Array.from({ length: cols }, () => []);
@@ -29,25 +28,38 @@ const cols3 = chunk(data, 3);
 const cols2 = chunk(data, 2);
 ---
 
-<div class="mx-auto max-w-[85rem] px-4 py-10 md:px-6 lg:px-8 lg:py-14">
-  <div class="grid grid-cols-2 gap-2 md:grid-cols-3">
-    {
-      cols3.map((col: any[]) => (
-        <div class="hidden md:block space-y-2">
-          {col.map((item: Item) => (
-            <Category data={item} />
-          ))}
-        </div>
-      ))
-    }
-    {
-      cols2.map((col: any[]) => (
-        <div class=" space-y-2 md:hidden">
-          {col.map((item: Item) => (
-            <Category data={item} />
-          ))}
-        </div>
-      ))
-    }
+<section class="mx-0 w-full max-w-[85rem] px-4 py-8 md:px-6 lg:px-8 lg:py-14">
+  <div class="mx-auto">
+    <h2
+      class="mb-4 mt-4 text-balance text-3xl font-bold text-neutral-800 dark:text-neutral-200 md:text-4xl"
+    >
+      {title}
+    </h2>
+    <p class="mb-8 ps-4 text-neutral-700 dark:text-neutral-400 lg:w-4/5">
+      {subtitle}
+    </p>
+    <div class="mx-auto grid grid-cols-1 sm:grid-cols-2 gap-2 px-4 md:grid-cols-3 ">
+      {
+        cols3.map((col: any[]) => (
+          <div class="hidden space-y-2 md:block">
+            {col.map((item: Item) => (
+              <Category data={item} />
+            ))}
+          </div>
+        ))
+      }
+      {
+        cols2.map((col: any[]) => (
+          <div class="space-y-2 hidden sm:block md:hidden">
+            {col.map((item: Item) => (
+              <Category data={item} />
+            ))}
+          </div>
+        ))
+      }
+      <div class="sm:hidden space-y-2">
+        {data.map((item: Item) => <Category data={item} />)}
+      </div>
+    </div>
   </div>
-</div>
+</section>
