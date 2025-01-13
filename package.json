@@ -20,7 +20,7 @@
     "@preline/overlay": "^2.6.0",
     "@preline/tabs": "^2.6.0",
     "@sanity/astro": "^3.1.9",
-    "@sanity/client": "^6.24.1",
+    "@sanity/client": "^6.24.3",
     "@sanity/image-url": "^1.1.0",
     "@sanity/visual-editing": "^2.11.4",
     "astro": "^4.16.16",
